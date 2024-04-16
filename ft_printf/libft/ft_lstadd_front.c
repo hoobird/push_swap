@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cat_s.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hulim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 03:57:03 by hoobird           #+#    #+#             */
-/*   Updated: 2023/09/26 03:57:21 by hoobird          ###   ########.fr       */
+/*   Created: 2023/09/19 21:19:21 by hulim             #+#    #+#             */
+/*   Updated: 2023/09/19 21:21:56 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *s)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	ft_putstr_fd(s, 1);
-	return ((int) ft_strlen(s));
+	new->next = *lst;
+	*lst = new;
 }

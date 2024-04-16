@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cat_s.c                                         :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 03:57:03 by hoobird           #+#    #+#             */
-/*   Updated: 2023/09/26 03:57:21 by hoobird          ###   ########.fr       */
+/*   Created: 2023/09/20 02:51:27 by hoobird           #+#    #+#             */
+/*   Updated: 2023/09/20 03:05:10 by hoobird          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *s)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	ft_putstr_fd(s, 1);
-	return ((int) ft_strlen(s));
+	t_list	*temp;
+
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = temp;
+	}
 }

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cat_s.c                                         :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hulim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 03:57:03 by hoobird           #+#    #+#             */
-/*   Updated: 2023/09/26 03:57:21 by hoobird          ###   ########.fr       */
+/*   Created: 2023/09/19 20:43:00 by hulim             #+#    #+#             */
+/*   Updated: 2023/09/19 21:12:56 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *s)
+t_list	*ft_lstnew(void *content)
 {
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	ft_putstr_fd(s, 1);
-	return ((int) ft_strlen(s));
+	t_list	*temp;
+
+	temp = malloc(sizeof(t_list));
+	if (temp == NULL)
+		return (NULL);
+	temp->content = content;
+	temp->next = NULL;
+	return (temp);
 }

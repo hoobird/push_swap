@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
+/*   Created: 2024/04/16 09:36:56 by hulim             #+#    #+#             */
 /*   Updated: 2024/04/16 12:38:23 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(int argc, char **argv)
+# include "ft_printf/ft_printf.h"
+# include "ft_printf/libft/libft.h"
+# include <unistd.h>
+
+typedef struct s_stack
 {
-	if (argc == 1 || !isargsint(argc-1, &argv[1]))
-	{
-		write(1, "Error\n", 6);
-		return (0);
-	}
-	return(0);
-}
+	int				top;
+	unsigned int	capacity;
+	int				*array;
+}	t_stack;
+
+int	isargsint(int size, char **args);
+int	isstrnum(char *numstr);
+int	isintwithinlimt(char *numstr);
+
+#endif

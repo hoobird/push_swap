@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cat_xX.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 04:04:24 by hoobird           #+#    #+#             */
-/*   Updated: 2023/12/28 09:36:46 by hulim            ###   ########.fr       */
+/*   Updated: 2023/09/26 04:08:47 by hoobird          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	ft_printhex(unsigned int i, int whatcase)
 {

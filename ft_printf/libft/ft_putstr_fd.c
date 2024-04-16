@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cat_s.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hulim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 03:57:03 by hoobird           #+#    #+#             */
-/*   Updated: 2023/09/26 03:57:21 by hoobird          ###   ########.fr       */
+/*   Created: 2023/09/17 15:01:00 by hulim             #+#    #+#             */
+/*   Updated: 2023/09/17 15:14:22 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *s)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	ft_putstr_fd(s, 1);
-	return ((int) ft_strlen(s));
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

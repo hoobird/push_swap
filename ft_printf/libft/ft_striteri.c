@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cat_s.c                                         :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 03:57:03 by hoobird           #+#    #+#             */
-/*   Updated: 2023/09/26 03:57:21 by hoobird          ###   ########.fr       */
+/*   Created: 2023/09/19 02:27:21 by hoobird           #+#    #+#             */
+/*   Updated: 2023/09/19 02:32:29 by hoobird          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *s)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	ft_putstr_fd(s, 1);
-	return ((int) ft_strlen(s));
+	int	i;
+
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i] != 0)
+	{
+		f(i, s + i);
+		i++;
+	}
 }

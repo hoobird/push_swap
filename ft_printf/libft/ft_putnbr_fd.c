@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cat_s.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 03:57:03 by hoobird           #+#    #+#             */
-/*   Updated: 2023/09/26 03:57:21 by hoobird          ###   ########.fr       */
+/*   Created: 2023/09/18 20:35:22 by hoobird           #+#    #+#             */
+/*   Updated: 2023/09/19 00:51:06 by hoobird          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *s)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	ft_putstr_fd(s, 1);
-	return ((int) ft_strlen(s));
+	long	nn;
+
+	nn = (long) n;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nn = -nn;
+	}
+	if (nn >= 10)
+		ft_putnbr_fd(nn / 10, fd);
+	ft_putchar_fd('0' + nn % 10, fd);
 }

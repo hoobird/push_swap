@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: hulim <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/16 12:38:23 by hulim            ###   ########.fr       */
+/*   Created: 2023/09/10 19:44:41 by hulim             #+#    #+#             */
+/*   Updated: 2023/09/19 03:33:15 by hoobird          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (argc == 1 || !isargsint(argc-1, &argv[1]))
+	unsigned char	*temp;
+	size_t			i;
+
+	i = 0;
+	temp = (unsigned char *) s;
+	while (i < n)
 	{
-		write(1, "Error\n", 6);
-		return (0);
+		if (*temp == (unsigned char) c)
+			return ((void *) temp);
+		i++;
+		temp++;
 	}
-	return(0);
+	return (NULL);
 }

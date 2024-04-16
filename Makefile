@@ -1,36 +1,29 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+SRCS = push_swap.c validation.c
+OBJS = $(SRCS:.c=.o)
+FTPRINTF_PATH = ./ft_printf
+LIBFT_PATH = $(FTPRINTF_PATH)/libft
+FTPRINTF = $(FTPRINTF_PATH)/libftprintf.a
+LIBFT = $(LIBFT_PATH)/libft.a
+NAME = push_swap
 
-SRC = *.c
+all: $(NAME)
 
-OBJ = $(SRC:.c=.o)
+$(NAME): $(FTPRINTF)
+	$(CC) $(CFLAGS) $(SRCS) $(FTPRINTF) $(LIBFT) -o $(NAME)
 
-NAME = libftprintf.a
+$(FTPRINTF):
+	make -C $(FTPRINTF_PATH) all
 
-LIBFTPATH = ./libft
-LIBFT = ./libft/libft.a
-
-
-all:	$(NAME)
-
-$(NAME): $(OBJ) $(LIBFT)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJ) 
-	
-$(OBJ):	$(SRC)
-	$(CC)  $(CFLAGS) -c $(SRC)
-
-$(LIBFT):
-	make -C $(LIBFTPATH) all
-	
 clean:
-	make -C $(LIBFTPATH) clean
-	rm -f $(OBJ) $(OBJB)
-	
-fclean:	clean
-	make -C $(LIBFTPATH) fclean
-	rm -f $(NAME)
+	rm -f $(OBJS)
+	make -C $(FTPRINTF_PATH) clean
+
+fclean: clean
+	rm -f $(OBJS)
+	make -C $(FTPRINTF_PATH) fclean
 
 re:	fclean all
-	
-.PHONY: all fclean clean re libft
+
+phony: all fclean clean re libft ft_printf push_swap

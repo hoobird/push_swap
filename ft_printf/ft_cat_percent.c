@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cat_percent.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:00:17 by hoobird           #+#    #+#             */
-/*   Updated: 2023/12/28 09:36:46 by hulim            ###   ########.fr       */
+/*   Updated: 2023/09/26 16:01:44 by hoobird          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_putpercent(void)
 {

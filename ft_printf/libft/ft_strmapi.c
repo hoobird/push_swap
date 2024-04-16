@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cat_s.c                                         :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoobird <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 03:57:03 by hoobird           #+#    #+#             */
-/*   Updated: 2023/09/26 03:57:21 by hoobird          ###   ########.fr       */
+/*   Created: 2023/09/19 02:15:46 by hoobird           #+#    #+#             */
+/*   Updated: 2023/09/19 02:25:45 by hoobird          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	ft_putstr_fd(s, 1);
-	return ((int) ft_strlen(s));
+	char	*output;
+	int		counter;
+
+	output = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!s || output == NULL)
+		return (NULL);
+	counter = 0;
+	while (s[counter] != 0)
+	{
+		output[counter] = f(counter, s[counter]);
+		counter++;
+	}
+	output[counter] = 0;
+	return (output);
 }
