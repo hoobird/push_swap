@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = #-Wall -Wextra -Werror
-SRCS = push_swap.c validation.c operations.c preparations.c stackfunc.c
+SRCS = push_swap.c validation.c operations.c operations2.c preparations.c stackfunc.c
 OBJS = $(SRCS:.c=.o)
 FTPRINTF_PATH = ./ft_printf
 LIBFT_PATH = $(FTPRINTF_PATH)/libft
@@ -10,7 +10,7 @@ NAME = push_swap
 
 all: $(NAME)
 
-$(NAME): $(FTPRINTF)
+$(NAME): $(FTPRINTF) $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) $(FTPRINTF) $(LIBFT) -o $(NAME)
 
 $(FTPRINTF):

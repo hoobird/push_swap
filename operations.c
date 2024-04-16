@@ -6,21 +6,11 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/16 21:19:53 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/17 02:48:26 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    sab(t_stack *stack1, char aorb);
-void    ss(t_stack *stacka, t_stack *stackb);
-void    pab(t_stack *stack1, char aorb);
-void    ra(t_stack *stacka, t_stack *stackb);
-void    rb(t_stack *stacka, t_stack *stackb);
-void    rr(t_stack *stacka, t_stack *stackb);
-void    rra(t_stack *stacka, t_stack *stackb);
-void    rrb(t_stack *stacka, t_stack *stackb);
-void    rrr(t_stack *stacka, t_stack *stackb);
 
 void    sab(t_stack *stack1, char aorb)
 {
@@ -33,20 +23,29 @@ void    sab(t_stack *stack1, char aorb)
 	temp = stack1->arr[topindex];
 	stack1->arr[topindex] = stack1->arr[topindex-1];
 	stack1->arr[topindex-1] = temp;
-	ft_putstr_fd(ft_strjoin(ft_strjoin("s", &aorb), "\n"), 1);
+	if (aorb != 0)
+		ft_putstr_fd(ft_strjoin(ft_strjoin("s", &aorb), "\n"), 1);
 }
 
 void    ss(t_stack *stacka, t_stack *stackb)
 {
-	sab(stacka, 'a');
-	sab(stackb, 'b');
+	sab(stacka, 0);
+	sab(stackb, 0);
 	ft_putstr_fd("ss", 1);
 }
 
-void    pab(t_stack *stack1, char aorb)
+void    pab(t_stack *stacka, t_stack *stackb, char aorb)
 {
 	int	popped;
 
-	
+	if (aorb == 'a')
+	{	popped = popnum(stackb);
+		pushnum(stacka, popped);
+	}
+	else
+	{
+		popped = popnum(stacka);
+		pushnum(stackb, popped);
+	}
 	ft_putstr_fd(ft_strjoin(ft_strjoin("p", &aorb), "\n"), 1);
 }
