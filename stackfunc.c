@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stackfunc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/16 18:08:57 by hulim            ###   ########.fr       */
+/*   Created: 2024/04/16 19:16:18 by hulim             #+#    #+#             */
+/*   Updated: 2024/04/16 19:49:56 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	pushnum(t_stack *stack1, int num)
 {
-	t_stack	a;
-	t_stack	b;
+	stack1->top++;
+	stack1->arr[top] = num;
+}
 
-	if (argc == 1)
-		return (0);
-	if ((!isargsintandnodup(argc - 1, &argv[1]))
-		|| setupstack(&a, &b, argc - 1) == -1)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (0);
-	}
-	return (0);
+int	popnum(t_stack *stack1)
+{
+	int	popped;
+
+	popped = stack1->arr[stack1->top];
+	stack1->top--;
+	return (popped);
 }
