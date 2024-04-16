@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:36:56 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/16 12:38:23 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/16 13:22:51 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ typedef struct s_stack
 	int				*array;
 }	t_stack;
 
-int	isargsint(int size, char **args);
+int	isargsintandnodup(int size, char **args);
 int	isstrnum(char *numstr);
 int	isintwithinlimt(char *numstr);
+int	istherenodup(int size, char **args);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:09:38 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/16 12:51:24 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/16 13:09:34 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	isargsint(int size, char **args)
+int	isargsintandnodup(int size, char **args)
 {
 	int	counter;
 
@@ -23,7 +23,7 @@ int	isargsint(int size, char **args)
 			return (0);
 		counter++;
 	}
-	return (1);
+	return (istherenodup(size, args));
 }
 
 int	isstrnum(char *numstr)
@@ -41,7 +41,7 @@ int	isstrnum(char *numstr)
 
 int	isintwithinlimt(char *numstr)
 {
-	int		multiplier;
+	int			multiplier;
 	long		number;
 
 	multiplier = 1;
@@ -64,13 +64,31 @@ int	isintwithinlimt(char *numstr)
 	return (1);
 }
 
-int istheredup(int size, char **args)
+int	istherenodup(int size, char **args)
 {
 	int	counter;
+	int	counter2;
+	int	*intlist;
 
+	intlist = malloc(sizeof(int) * size);
 	counter = 0;
 	while (counter < size)
 	{
-		
+		intlist[counter] = ft_atoi(args[counter]);
+		counter++;
 	}
+	counter = 0;
+	while (counter < size - 1)
+	{
+		counter2 = counter + 1;
+		while (counter2 < size)
+		{
+			if (intlist[counter] == intlist[counter2])
+				return (0);
+			counter2++;
+		}
+		counter++;
+	}
+	free(intlist);
+	return (1);
 }
