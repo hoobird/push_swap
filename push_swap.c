@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/17 03:01:34 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/17 14:36:09 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,10 @@ int	main(int argc, char **argv)
 
 void populatestacka(t_stack *stacka, char** numbersstr, int size)
 {
-	int	counter;
-
-	counter = 0;
-	while (counter < size)
+	while (size > 0)
 	{
-		pushnum(stacka, ft_atoi(numbersstr[counter]));
-		counter++;
+		pushnum(stacka, ft_atoi(numbersstr[size - 1]));
+		size--;
 	}
 }
 
@@ -47,7 +44,7 @@ void	solve(t_stack *stacka, t_stack *stackb, int size)
 {
 	int	currtop;
 
-	while (checkifsorted(stacka, size) == 1)
+	while (checkifsorted(stacka, size) == 0)
 	{
 		while (stacka->top > 0)
 		{
@@ -77,8 +74,9 @@ int	checkifsorted(t_stack *stacka, int size)
 	{
 		if (stacka->arr[counter] < stacka->arr[counter + 1])
 			return (0);
+		counter++;
 	}
-	if (stacka->top != size - 1);
+	if (stacka->top != size - 1)
 		return (0);
 	ft_printf("its sorted");
 	return (1);

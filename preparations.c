@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:39:56 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/17 03:05:17 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/17 14:38:57 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int setupstacks(t_stack *stacka, t_stack *stackb, int size)
 {
     stacka->top = -1;
-    stacka->arr = malloc(sizeof(int) * size);
+    stacka->arr = (int *)malloc(sizeof(int) * size);
     stackb->top = -1;
-    stackb->arr = malloc(sizeof(int) * size);
+    stackb->arr = (int *)malloc(sizeof(int) * size);
     if (stacka->arr == NULL || stackb->arr == NULL)
         return (-1);
     return (0);
