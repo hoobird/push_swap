@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:09:38 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/16 13:09:34 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/17 19:34:16 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	isstrnum(char *numstr)
 {
 	if (!(*numstr))
 		return (0);
+	if (*numstr == '-')
+		numstr++;
 	while (*numstr)
 	{
 		if (ft_isdigit(*numstr) == 0)

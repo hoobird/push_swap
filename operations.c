@@ -6,13 +6,13 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/17 02:48:26 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/17 16:56:23 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    sab(t_stack *stack1, char aorb)
+void    sab(t_stack *stack1, char *aorb)
 {
 	int	temp;
 	int	topindex;
@@ -24,7 +24,7 @@ void    sab(t_stack *stack1, char aorb)
 	stack1->arr[topindex] = stack1->arr[topindex-1];
 	stack1->arr[topindex-1] = temp;
 	if (aorb != 0)
-		ft_putstr_fd(ft_strjoin(ft_strjoin("s", &aorb), "\n"), 1);
+		ft_putstr_fd(ft_strjoin(ft_strjoin("s", aorb), "\n"), 1);
 }
 
 void    ss(t_stack *stacka, t_stack *stackb)
@@ -34,11 +34,11 @@ void    ss(t_stack *stacka, t_stack *stackb)
 	ft_putstr_fd("ss", 1);
 }
 
-void    pab(t_stack *stacka, t_stack *stackb, char aorb)
+void    pab(t_stack *stacka, t_stack *stackb, char *aorb)
 {
 	int	popped;
 
-	if (aorb == 'a')
+	if (ft_strncmp(aorb, "a", 1) == 0)
 	{	popped = popnum(stackb);
 		pushnum(stacka, popped);
 	}
@@ -47,5 +47,5 @@ void    pab(t_stack *stacka, t_stack *stackb, char aorb)
 		popped = popnum(stacka);
 		pushnum(stackb, popped);
 	}
-	ft_putstr_fd(ft_strjoin(ft_strjoin("p", &aorb), "\n"), 1);
+	ft_putstr_fd(ft_strjoin(ft_strjoin("p", aorb), "\n"), 1);
 }

@@ -1,0 +1,137 @@
+void	printstack(t_stack *stacka)
+{
+	int	largestindex;
+
+	largestindex = stacka->top;
+	while (largestindex >= 0)
+	{
+		ft_printf("%d ", stacka->arr[largestindex]);
+		largestindex--;
+	}
+	ft_printf("\n");
+}
+
+void	solve(t_stack *stacka, t_stack *stackb, int size)
+{
+	int	currtop;
+
+	while (checkifsorted(stacka, size) == 0)
+	{
+		while (stacka->top > 0)
+		{
+			currtop = stacka->top;
+			if (stacka->arr[currtop] > stacka->arr[0])
+				rrab(stacka, "a");
+			if (stacka->arr[currtop] > stacka->arr[currtop - 1])
+				sab(stacka, "a");
+			pab(stacka, stackb, "b");
+		}
+		while (stackb->top > 0)
+		{
+			currtop = stackb->top;
+			if (stacka->arr[currtop] < stacka->arr[0])
+				rrab(stackb, "b");
+			if (stackb->arr[currtop] < stackb->arr[currtop - 1])
+				sab(stackb, "b");
+			pab(stacka, stackb, "a");
+		}
+		pab(stacka, stackb, "a");
+	}
+}
+
+
+void	solve(t_stack *stacka, t_stack *stackb, int size)
+{
+	int	currtop;
+	int	minnumber;
+	int	maxnumber;
+
+	while (checkifsorted(stacka, size) == 0)
+	{
+		while (stacka->top > 0)
+		{
+			currtop = stacka->top;
+			minnumber = stacka->arr[findminreturnindex(stacka)];
+			while (stacka->arr[currtop] != minnumber)
+			{
+				if (findminreturnindex(stacka) + 1 > (currtop + 1) / 2)
+					rab(stacka, "a");
+				else
+					rrab(stacka, "a");
+				// printstack(stacka, stackb);
+				// sleep(1);
+			}
+			pab(stacka, stackb, "b");
+			// printstack(stacka, stackb);
+			// sleep(1);
+		}
+		while (stackb->top >= 0)
+		{
+			currtop = stackb->top;
+			maxnumber = stackb->arr[findmaxreturnindex(stackb)];
+			while (stackb->arr[currtop] != maxnumber)
+			{
+				if (findmaxreturnindex(stackb) + 1 > (currtop + 1) / 2)
+					rab(stackb, "b");
+				else
+					rrab(stackb, "b");
+				// printstack(stacka, stackb);
+				// sleep(1);
+			}
+			pab(stacka, stackb, "a");
+			// printstack(stacka, stackb);
+			// sleep(1);
+		}
+	}
+}
+
+
+
+void	solve(t_stack *stacka, t_stack *stackb, int size)
+{
+	int	currtop;
+	int	minnumber;
+	int	maxnumber;
+
+	while (checkifsorted(stacka, size) == 0)
+	{
+		while (stacka->top >= 0)
+		{
+			currtop = stacka->top;
+			minnumber = stacka->arr[findminreturnindex(stacka)];
+			while (stacka->arr[currtop] != minnumber)
+			{
+				if (findminreturnindex(stacka) + 1 > (currtop + 1) / 2)
+					rab(stacka, "a");
+				else
+					rrab(stacka, "a");
+				// if (stacka->arr[currtop] > stacka->arr[currtop - 1])
+				// 	sab(stacka, "a");
+				// printstack(stacka, stackb);
+				// sleep(1);
+			}
+			pab(stacka, stackb, "b");
+			// printstack(stacka, stackb);
+			// sleep(1);
+		}
+		while (stackb->top >= 0)
+		{
+			currtop = stackb->top;
+			maxnumber = stackb->arr[findmaxreturnindex(stackb)];
+			while (stackb->arr[currtop] != maxnumber)
+			{
+				if (findmaxreturnindex(stackb) + 1 > (currtop + 1) / 2)
+					rab(stackb, "b");
+				else
+					rrab(stackb, "b");
+				// if (stackb->arr[currtop] < stackb->arr[currtop - 1])
+				// 	sab(stackb, "b");
+				// printstack(stacka, stackb);
+				// sleep(1);
+			}
+			pab(stacka, stackb, "a");
+			// printstack(stacka, stackb);
+			// sleep(1);
+		}
+	}
+}
