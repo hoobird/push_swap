@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/17 21:58:03 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/17 22:47:01 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,49 +59,40 @@ int	main(int argc, char **argv)
 void	solve(t_stack *stacka, t_stack *stackb, int size)
 {
 	int	currtop;
-	int	minnumber;
-	int	maxnumber;
+	int minormaxbool;
+	int	minormaxnumber;
+	int	upordownbool;
 
 	while (checkifsorted(stacka, size) == 0)
 	{
 		while (stacka->top >= 0)
 		{
 			currtop = stacka->top;
-			minnumber = stacka->arr[findminreturnindex(stacka)];
-			while (stacka->arr[currtop] != minnumber)
+			if (findminreturnindex(stacka) > findmaxreturnindex(stacka))
 			{
-				if (findminreturnindex(stacka) + 1 > (currtop + 1) / 2)
+				minormaxbool = 0;
+				upordownbool = findminreturnindex(stacka) + 1 > (currtop + 1) / 2;
+				minormaxnumber = stacka->arr[findminreturnindex(stacka)];
+			}
+			else
+			{
+				minormaxbool = 1;
+				upordownbool = findmaxreturnindex(stacka) + 1 > (currtop + 1) / 2;
+				minormaxnumber = stacka->arr[findmaxreturnindex(stacka)];
+			}
+			while (stacka->arr[currtop] != minormaxnumber)
+			{
+				if (upordownbool == 1)
 					rab(stacka, "a");
 				else
 					rrab(stacka, "a");
-				// if (stacka->arr[currtop] > stacka->arr[currtop - 1])
-				// 	sab(stacka, "a");
-				// printstack(stacka, stackb);
-				// sleep(1);
 			}
 			pab(stacka, stackb, "b");
-			// printstack(stacka, stackb);
-			// sleep(1);
+			if (minormaxbool == 0)
+				rab(stackb, "b");
 		}
 		while (stackb->top >= 0)
-		{
-			currtop = stackb->top;
-			maxnumber = stackb->arr[findmaxreturnindex(stackb)];
-			while (stackb->arr[currtop] != maxnumber)
-			{
-				if (findmaxreturnindex(stackb) + 1 > (currtop + 1) / 2)
-					rab(stackb, "b");
-				else
-					rrab(stackb, "b");
-				// if (stackb->arr[currtop] < stackb->arr[currtop - 1])
-				// 	sab(stackb, "b");
-				// printstack(stacka, stackb);
-				// sleep(1);
-			}
 			pab(stacka, stackb, "a");
-			// printstack(stacka, stackb);
-			// sleep(1);
-		}
 	}
 }
 
