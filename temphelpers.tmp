@@ -182,3 +182,45 @@ void	solve(t_stack *stacka, t_stack *stackb, int size)
 		// printstack(stacka, stackb);
 	}
 }
+
+
+void	solve(t_stack *stacka, t_stack *stackb)
+{
+	int	currtop;
+	int minormaxbool;
+	int	minormaxnumber;
+	int	upordownbool;
+
+	while (stacka->top >= 0)
+		pab(stacka, stackb, "b");
+	while (stackb->top >= 0)
+	{
+		currtop = stackb->top;
+		if (findminreturnindex(stackb) > findmaxreturnindex(stackb))
+		{
+			minormaxbool = 0;
+			upordownbool = findminreturnindex(stackb) + 1 > (currtop + 1) / 2;
+			minormaxnumber = stackb->arr[findminreturnindex(stackb)];
+		}
+		else
+		{
+			minormaxbool = 1;
+			upordownbool = findmaxreturnindex(stackb) + 1 > (currtop + 1) / 2;
+			minormaxnumber = stackb->arr[findmaxreturnindex(stackb)];
+		}
+		while (stackb->arr[currtop] != minormaxnumber)
+		{
+			if (upordownbool == 1)
+				rab(stackb, "a");
+			else
+				rrab(stackb, "a");
+		}
+		pab(stacka, stackb, "a");
+		if (minormaxbool == 0)
+			rab(stacka, "a");
+		// printstack(stacka, stackb);
+	}
+	rrab(stacka, "a");
+	printstack(stacka, stackb);
+	// rab(stacka,"a");
+}

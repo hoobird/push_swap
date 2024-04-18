@@ -13,7 +13,7 @@ def main():
     
     randomlist=[]
     while (len(randomlist) <= length):
-        num = random.randint(-length, length)
+        num = random.randint(-length*100, length*100)
         if num not in randomlist:
             randomlist.append(num)
     output = ' '.join(str(e) for e in randomlist)

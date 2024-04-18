@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:16:18 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/17 20:57:54 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/18 21:26:00 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,27 @@ int	findminreturnindex(t_stack *stack1)
 		indexcounter--;
 	}
 	return smallestindex;
+}
+
+int	findminreturnindexrange(t_stack *stack1, int range)
+{
+	int	indexcounter;
+	int lowernum;
+	int	lowerindex;
+
+	indexcounter = stack1->top;
+	lowerindex = (stack1->top) - range;
+	if (lowerindex < 0)
+		lowerindex = 0;
+	lowernum = stack1->arr[lowerindex];
+	while (indexcounter > lowerindex)
+	{
+		if (stack1->arr[indexcounter] < lowernum)
+		{
+			lowerindex = indexcounter;
+			lowernum = stack1->arr[indexcounter];
+		}
+		indexcounter--;
+	}
+	return lowerindex;
 }

@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/18 19:32:22 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/18 22:13:57 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,53 +51,44 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	populatestacka(&a, &argv[1], argc - 1);
-	solve(&a, &b, argc - 1);
+	solve(&a, &b);
 	freestack(&a, &b);
 	return (0);
 }
 
-void	solve(t_stack *stacka, t_stack *stackb, int size)
+void	solve(t_stack *stacka, t_stack *stackb)
 {
+	int	splitcounter;
 	int	currtop;
-	int minormaxbool;
-	int	minormaxnumber;
-	int	upordownbool;
+	int	minnum;
+	int	maxnum;
 
-	while (checkifsorted(stacka, size) == 0)
+	while (stacka->top >= 0)
 	{
-		while (stacka->top >= 0)
-			pab(stacka, stackb, "b");
-		while (stackb->top >= 0)
+		while (splitcounter > 0 && stacka->top >= 0)
 		{
-			currtop = stackb->top;
-			if (findminreturnindex(stackb) > findmaxreturnindex(stackb))
+			currtop = stacka->top;
+			minnum = stacka->arr[findminreturnindexrange(stacka, splitcounter)];
+			while (stacka->arr[currtop] != minnum)
 			{
-				minormaxbool = 0;
-				upordownbool = findminreturnindex(stackb) + 1 > (currtop + 1) / 2;
-				minormaxnumber = stackb->arr[findminreturnindex(stackb)];
-			}
-			else
-			{
-				minormaxbool = 1;
-				upordownbool = findmaxreturnindex(stackb) + 1 > (currtop + 1) / 2;
-				minormaxnumber = stackb->arr[findmaxreturnindex(stackb)];
-			}
-			while (stackb->arr[currtop] != minormaxnumber)
-			{
-				if (upordownbool == 1)
-					rab(stackb, "a");
-				else
-					rrab(stackb, "a");
-			}
-			pab(stacka, stackb, "a");
-			if (minormaxbool == 0)
 				rab(stacka, "a");
-			// printstack(stacka, stackb);
+			}
+			pab(stacka, stackb, "b");
+			splitcounter--;
 		}
-		rrab(stacka, "a");
-		// printstack(stacka, stackb);
-		// rab(stacka,"a");
+		splitcounter = 20;
 	}
+	while (stackb->top >= 0)
+	{
+		currtop = stackb->top;
+		maxnum = stackb->arr[findmaxreturnindex(stackb)];
+		while (stackb->arr[currtop] != maxnum)
+			rab(stackb, "a");
+		pab(stacka, stackb, "a");
+	}
+	printstack(stacka, stackb);
+	if (checkifsorted(stacka, 100) == 1)
+		ft_printf("sorted");
 }
 
 int	checkifsorted(t_stack *stacka, int size)
