@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/17 22:47:01 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/18 19:32:22 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,33 +66,37 @@ void	solve(t_stack *stacka, t_stack *stackb, int size)
 	while (checkifsorted(stacka, size) == 0)
 	{
 		while (stacka->top >= 0)
+			pab(stacka, stackb, "b");
+		while (stackb->top >= 0)
 		{
-			currtop = stacka->top;
-			if (findminreturnindex(stacka) > findmaxreturnindex(stacka))
+			currtop = stackb->top;
+			if (findminreturnindex(stackb) > findmaxreturnindex(stackb))
 			{
 				minormaxbool = 0;
-				upordownbool = findminreturnindex(stacka) + 1 > (currtop + 1) / 2;
-				minormaxnumber = stacka->arr[findminreturnindex(stacka)];
+				upordownbool = findminreturnindex(stackb) + 1 > (currtop + 1) / 2;
+				minormaxnumber = stackb->arr[findminreturnindex(stackb)];
 			}
 			else
 			{
 				minormaxbool = 1;
-				upordownbool = findmaxreturnindex(stacka) + 1 > (currtop + 1) / 2;
-				minormaxnumber = stacka->arr[findmaxreturnindex(stacka)];
+				upordownbool = findmaxreturnindex(stackb) + 1 > (currtop + 1) / 2;
+				minormaxnumber = stackb->arr[findmaxreturnindex(stackb)];
 			}
-			while (stacka->arr[currtop] != minormaxnumber)
+			while (stackb->arr[currtop] != minormaxnumber)
 			{
 				if (upordownbool == 1)
-					rab(stacka, "a");
+					rab(stackb, "a");
 				else
-					rrab(stacka, "a");
+					rrab(stackb, "a");
 			}
-			pab(stacka, stackb, "b");
-			if (minormaxbool == 0)
-				rab(stackb, "b");
-		}
-		while (stackb->top >= 0)
 			pab(stacka, stackb, "a");
+			if (minormaxbool == 0)
+				rab(stacka, "a");
+			// printstack(stacka, stackb);
+		}
+		rrab(stacka, "a");
+		// printstack(stacka, stackb);
+		// rab(stacka,"a");
 	}
 }
 

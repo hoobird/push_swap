@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/17 22:43:48 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/18 16:53:50 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    rrab(t_stack *stack1, char *aorb)
 	int count;
 
 	count = 0;
-	if (count <= 0)
+	if (stack1->top <= 0)
 		return ;
 	newfirst = stack1->arr[0];
 	while (count < stack1->top)
