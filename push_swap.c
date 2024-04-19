@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/18 22:13:57 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/19 23:24:01 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ void	solve(t_stack *stacka, t_stack *stackb)
 		currtop = stackb->top;
 		maxnum = stackb->arr[findmaxreturnindex(stackb)];
 		while (stackb->arr[currtop] != maxnum)
-			rab(stackb, "a");
+			rab(stackb, "b");
 		pab(stacka, stackb, "a");
 	}
-	printstack(stacka, stackb);
-	if (checkifsorted(stacka, 100) == 1)
-		ft_printf("sorted");
+	// printstack(stacka, stackb);
+	// if (checkifsorted(stacka, 5) == 1)
+	// 	ft_printf("sorted");
 }
 
 int	checkifsorted(t_stack *stacka, int size)
