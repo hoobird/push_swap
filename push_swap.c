@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/21 00:21:12 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/21 03:03:29 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,26 @@ int	checkrotneeded(t_stack *from, t_stack *to, int findex)
 	int	tomaxindex;
 	int	ttlsize;
 
-	ttlsize = from->top + to->top + 2;
+	ttlsize = (from->top) + (to->top) + 2;
 	toclimbindex = findminreturnindex(to);
 	tomaxindex = findmaxreturnindex(to);
 	num = from->arr[findex];
 	while (toclimbindex != tomaxindex)
 	{
 		if (num < to->arr[toclimbindex])
-			return (((from->top) - findex) * ttlsize + (to->top) - toclimbindex);
+			return (((from->top) - findex) * ttlsize + ((to->top) - toclimbindex + 1));
 		if(toclimbindex == to->top)
 			toclimbindex = 0;
 		else
 			toclimbindex++;
 	}
-	if (num < to->arr[tomaxindex])
-		return (((from->top) - findex) * ttlsize + (to->top) - tomaxindex);
-	else
-		return (((from->top) - findex) * ttlsize + (to->top) - tomaxindex + 1);
+	if (num < to->arr[tomaxindex]) {
+		int result = (((from->top) - findex) * ttlsize + (to->top) + 1 - tomaxindex);
+		return result;
+	} else {
+		int result = (((from->top) - findex) * ttlsize + (to->top) - tomaxindex);
+		return result;
+	}
 }
 
 int	positiveit(int i)
@@ -111,17 +114,17 @@ int	*findminrotindex(int *rotlist, int sizefrom, int sizeto)
 	int minmoves;
 	int	*output;
 
-	output = malloc(sizeof(int) * 2);
+	output = ft_calloc(sizeof(int), 2);
 	minmoves = sizefrom + sizeto;
-	rotlistcounter = sizefrom;
-	while(rotlistcounter > 0)
+	rotlistcounter = sizefrom - 1;
+	while(rotlistcounter >= 0)
 	{
 		currfrom = rotlist[rotlistcounter] / (sizefrom + sizeto);
 		currto = rotlist[rotlistcounter] % (sizefrom + sizeto);
-		if (currfrom < (sizefrom / 2))
-			currfrom = -(sizefrom - currfrom);
-		if (currto < (sizeto / 2))
-			currto = -(sizeto - currfrom);
+		if (currfrom > (sizefrom / 2))
+			currfrom =  currfrom - sizefrom;
+		if (currto > (sizeto / 2))
+			currto = currto - sizeto;
 		if ((currfrom < 0 && currto < 0 ) || (currfrom > 0 && currto > 0))
 		{
 			if (positiveit((currfrom) - positiveit(currto)) < minmoves)
@@ -138,7 +141,7 @@ int	*findminrotindex(int *rotlist, int sizefrom, int sizeto)
 			output[1] = currto;	
 		}
 		rotlistcounter--;
-	}	
+	}
 	return (output);
 }
 
@@ -159,23 +162,18 @@ void	moveupdown(t_stack *stacka, t_stack *stackb, int *bestchoice)
 	else if (bestchoice[0] < 0 && bestchoice[1] < 0)
 	{
 		commonsteps = findmax2(bestchoice[0], bestchoice[1]);
-		bestchoice[0] += commonsteps;
-		bestchoice[1] += commonsteps;
+		bestchoice[0] -= commonsteps;
+		bestchoice[1] -= commonsteps;
 		while (commonsteps != 0)
 		{
 			rrr(stacka, stackb);
 			commonsteps++;
 		}
 	}
-	ft_printf("BESTCHOCE->a:%d, b:%d",bestchoice[0],bestchoice[1]);
-	int fked = 10;
 	while (bestchoice[0] < 0)
 	{
 		rrab(stacka, "a");
 		bestchoice[0]++;
-		fked--;
-		if (fked == 0)
-			break;
 	}
 	while (bestchoice[1] < 0)
 	{
@@ -186,9 +184,6 @@ void	moveupdown(t_stack *stacka, t_stack *stackb, int *bestchoice)
 	{
 		rab(stacka, "a");
 		bestchoice[0]--;
-		fked--;
-		if (fked == 0)
-			break;
 	}
 	while (bestchoice[1] > 0)
 	{
@@ -204,19 +199,15 @@ void findlowestcostmove(t_stack *from, t_stack *to)
 	int	*fromtorotations;
 	int	*bestchoice;
 
-	fromtorotations = malloc(sizeof(int) * ((from->top) + 1));
+	fromtorotations = ft_calloc(sizeof(int), (from->top) + 1);
 	indexchecking = from -> top;
-	while (indexchecking > 0)
+	while (indexchecking >= 0)
 	{
 		fromtorotations[indexchecking] = checkrotneeded(from, to, indexchecking);
 		indexchecking--;
 	}
-	printstack(from, to);
 	bestchoice = findminrotindex(fromtorotations, (from->top) + 1, (to->top) + 1);
-	ft_printf("BC from: %d, to: %d\n", bestchoice[0], bestchoice[1]);
 	moveupdown(from, to, bestchoice);
-	printstack(from, to);
-	sleep(1);
 	pab(from, to, "b");
 	free(bestchoice);
 	free(fromtorotations);
@@ -224,6 +215,7 @@ void findlowestcostmove(t_stack *from, t_stack *to)
 
 void	solveusingcost(t_stack *stacka, t_stack *stackb)
 {
+	int	dir;
 	
 	pab(stacka, stackb, "b");
 	pab(stacka, stackb, "b");
@@ -231,7 +223,18 @@ void	solveusingcost(t_stack *stacka, t_stack *stackb)
 		findlowestcostmove(stacka, stackb);
 	while (stackb->top >= 0)
 		pab(stacka, stackb, "a");
-	printstack(stacka, stackb);
+	if (findmaxreturnindex(stacka) > (stacka->top) / 2)
+		dir = 1;
+	while (findmaxreturnindex(stacka) != 0)
+	{
+		if (dir == 1)
+			rab(stacka, "a");
+		else
+			rrab(stacka, "a");
+	}
+	// printstack(stacka, stackb);
+	// if (checkifsorted(stacka, (stacka->top) + 1) == 1)
+	// 	ft_printf("sorted\n");
 }
 
 void	solve(t_stack *stacka, t_stack *stackb, int size)
@@ -242,7 +245,6 @@ void	solve(t_stack *stacka, t_stack *stackb, int size)
 		solve3(stacka, "a");
 	if (size > 3)
 		solveusingcost(stacka, stackb);
-	printstack(stacka, stackb);
 }
 
 void	solve2(t_stack *stack1, char *aorb)

@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/18 16:53:50 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/21 02:36:19 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,5 @@ void    rrr(t_stack *stacka, t_stack *stackb)
 {
 	rrab(stacka, 0);
 	rrab(stackb, 0);
-	ft_putstr_fd("rr\n", 1);
+	ft_putstr_fd("rrr\n", 1);
 }
