@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/21 02:36:19 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/21 05:13:00 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,16 @@ void    rrr(t_stack *stacka, t_stack *stackb)
 	rrab(stacka, 0);
 	rrab(stackb, 0);
 	ft_putstr_fd("rrr\n", 1);
+}
+
+void	repeatops(char *op, int times, t_stack *stacka, t_stack *stackb)
+{
+	t_stack	*chosen;
+	while (times > 0)
+	{
+		if (ft_strncmp("sa", op, 4) == 0)
+			sab(stacka, aorb);
+		
+		times--;
+	}
 }

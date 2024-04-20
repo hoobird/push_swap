@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/21 03:03:29 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/21 04:47:30 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,9 +241,11 @@ void	solve(t_stack *stacka, t_stack *stackb, int size)
 {
 	if (size == 2)
 		solve2(stacka, "a");
-	if (size == 3)
+	else if (size == 3)
 		solve3(stacka, "a");
-	if (size > 3)
+	else if (size == 5)
+		solve5(stacka, stackb);
+	else if (size > 3)
 		solveusingcost(stacka, stackb);
 }
 
@@ -286,4 +288,32 @@ void	solve3(t_stack *stack1, char *aorb)
 			sab(stack1, aorb);
 			rab(stack1, aorb);
 		}	
+}
+void	solve5(t_stack *stacka, t_stack *stackb)
+{
+	int	move;
+	int	count;
+
+	count = 2;
+	while(count > 0)
+	{
+		move = findminreturnindex(stacka);
+		if (move > 1)
+			move = 5 - move;
+		else
+			move += 1;
+		while (move != 0)
+		{
+			if (move > 0)
+				rab(stacka, "a");
+			if (move < 0)
+				rrab(stacka, "a");
+		}
+		pab(stacka, stackb, "b");
+		count--;
+	}
+	solve3(stacka, "a");
+	pab(stacka, stackb, "a");
+	pab(stacka, stackb, "a");
+	printstack(stacka, stackb);
 }

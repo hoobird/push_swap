@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:36:56 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/21 02:43:06 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/21 03:55:57 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void 	populatestacka(t_stack *stacka, char** numbersstr, int size);
 void	solve(t_stack *stacka, t_stack *stackb, int size);
 void	solve2(t_stack *stack1, char *aorb);
 void	solve3(t_stack *stack1, char *aorb);
+void	solve5(t_stack *stacka, t_stack *stackb);
 int		checkifsorted(t_stack *stacka, int size);
 int		isargsintandnodup(int size, char **args);
 int		isstrnum(char *numstr);
