@@ -14,12 +14,14 @@ def main():
             print(e)
     
     randomlist=[]
-    while (len(randomlist) <= length):
+    while (len(randomlist) < length):
         num = random.randint(-length*10, length*10)
         if num not in randomlist:
             randomlist.append(num)
     output = ' '.join(str(e) for e in randomlist)
-    print(f"ARGS=\"{output}\"") 
+    print(f"ARGS=\"{output}\";")
+    print("./push_swap $ARGS | ./checker_linux $ARGS")
+    print("./push_swap $ARGS | wc -l")
 
 
 if __name__ == "__main__":

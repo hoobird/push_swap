@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:36:56 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 05:47:58 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 06:23:02 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,8 @@ int		popnum(t_stack *stack1);
 int		findmaxreturnindex(t_stack *stack1);
 int		findminreturnindex(t_stack *stack1);
 int		findminreturnindexrange(t_stack *stack1, int range);
+
+// checker.c
+int		checkifsorted(t_stack *stacka, int size);
 
 #endif

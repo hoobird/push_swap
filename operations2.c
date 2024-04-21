@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 06:02:14 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 06:55:20 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	rab(t_stack *stack1, char *aorb)
 {
-	int	newlast;
-	int	count;
+	int		newlast;
+	int		count;
+	char	*output;
 
 	count = stack1->top;
 	if (count <= 0)
@@ -28,7 +29,12 @@ void	rab(t_stack *stack1, char *aorb)
 	}
 	stack1->arr[0] = newlast;
 	if (aorb != 0)
-		ft_putstr_fd(ft_strjoin(ft_strjoin("r", aorb), "\n"), 1);
+	{
+		output = ft_strjoin("r", aorb);
+		ft_putstr_fd(output, 1);
+		ft_putchar_fd('\n', 1);
+		free(output);
+	}
 }
 
 void	rr(t_stack *stacka, t_stack *stackb)
@@ -40,8 +46,9 @@ void	rr(t_stack *stacka, t_stack *stackb)
 
 void	rrab(t_stack *stack1, char *aorb)
 {
-	int	newfirst;
-	int	count;
+	int		newfirst;
+	int		count;
+	char	*output;
 
 	count = 0;
 	if (stack1->top <= 0)
@@ -54,7 +61,12 @@ void	rrab(t_stack *stack1, char *aorb)
 	}
 	stack1->arr[stack1->top] = newfirst;
 	if (aorb != 0)
-		ft_putstr_fd(ft_strjoin(ft_strjoin("rr", aorb), "\n"), 1);
+	{
+		output = ft_strjoin("rr", aorb);
+		ft_putstr_fd(output, 1);
+		ft_putchar_fd('\n', 1);
+		free(output);
+	}
 }
 
 void	rrr(t_stack *stacka, t_stack *stackb)

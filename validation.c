@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:09:38 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 05:23:01 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 06:20:52 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,9 @@ int	istherenodup(int size, char **args)
 	int	*intlist;
 
 	intlist = malloc(sizeof(int) * size);
-	counter = 0;
-	while (counter < size)
-	{
+	counter = -1;
+	while (++counter < size)
 		intlist[counter] = ft_atoi(args[counter]);
-		counter++;
-	}
 	counter = 0;
 	while (counter < size - 1)
 	{
@@ -86,7 +83,10 @@ int	istherenodup(int size, char **args)
 		while (counter2 < size)
 		{
 			if (intlist[counter] == intlist[counter2])
+			{
+				free(intlist);
 				return (0);
+			}
 			counter2++;
 		}
 		counter++;

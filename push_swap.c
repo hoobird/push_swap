@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 05:22:37 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 06:37:49 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	if (condition1 || condition2)
 	{
 		ft_putstr_fd("Error\n", 2);
+		freestack(&a, &b);
 		return (0);
 	}
 	populatestacka(&a, &argv[1], argc - 1);
@@ -36,6 +37,8 @@ int	main(int argc, char **argv)
 
 void	solve(t_stack *stacka, t_stack *stackb, int size)
 {
+	if (checkifsorted(stacka, size))
+		return ;
 	if (size == 2)
 		solve2(stacka, "a");
 	else if (size == 3)

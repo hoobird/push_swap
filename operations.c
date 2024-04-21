@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 06:02:00 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 06:54:20 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	sab(t_stack *stack1, char *aorb)
 {
-	int	temp;
-	int	topindex;
+	int		temp;
+	int		topindex;
+	char	*output;
 
 	if (stack1->top < 1)
 		return ;
@@ -24,7 +25,12 @@ void	sab(t_stack *stack1, char *aorb)
 	stack1->arr[topindex] = stack1->arr[topindex - 1];
 	stack1->arr[topindex - 1] = temp;
 	if (aorb != 0)
-		ft_putstr_fd(ft_strjoin(ft_strjoin("s", aorb), "\n"), 1);
+	{
+		output = ft_strjoin("s", aorb);
+		ft_putstr_fd(output, 1);
+		ft_putchar_fd('\n', 1);
+		free(output);
+	}
 }
 
 void	ss(t_stack *stacka, t_stack *stackb)
@@ -36,7 +42,8 @@ void	ss(t_stack *stacka, t_stack *stackb)
 
 void	pab(t_stack *stacka, t_stack *stackb, char *aorb)
 {
-	int	popped;
+	int		popped;
+	char	*output;
 
 	if (ft_strncmp(aorb, "a", 1) == 0)
 	{
@@ -48,5 +55,8 @@ void	pab(t_stack *stacka, t_stack *stackb, char *aorb)
 		popped = popnum(stacka);
 		pushnum(stackb, popped);
 	}
-	ft_putstr_fd(ft_strjoin(ft_strjoin("p", aorb), "\n"), 1);
+	output = ft_strjoin("p", aorb);
+	ft_putstr_fd(output, 1);
+	ft_putchar_fd('\n', 1);
+	free(output);
 }
