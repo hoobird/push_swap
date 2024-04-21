@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/21 05:13:00 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/21 15:45:15 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,29 @@ void    rrr(t_stack *stacka, t_stack *stackb)
 
 void	repeatops(char *op, int times, t_stack *stacka, t_stack *stackb)
 {
-	t_stack	*chosen;
-	while (times > 0)
+	while (times-- > 0)
 	{
 		if (ft_strncmp("sa", op, 4) == 0)
-			sab(stacka, aorb);
-		
-		times--;
+			sab(stacka, "a");
+		if (ft_strncmp("sb", op, 4) == 0)
+			sab(stackb, "b");
+		if (ft_strncmp("ss", op, 4) == 0)
+			ss(stacka, stackb);
+		if (ft_strncmp("pa", op, 4) == 0)
+			pab(stacka, stackb, "a");
+		if (ft_strncmp("pb", op, 4) == 0)
+			pab(stacka, stackb, "b");
+		if (ft_strncmp("ra", op, 4) == 0)
+			rab(stacka, "a");
+		if (ft_strncmp("rb", op, 4) == 0)
+			rab(stackb, "b");
+		if (ft_strncmp("rr", op, 4) == 0)
+			rr(stacka, stackb);
+		if (ft_strncmp("rra", op, 4) == 0)
+			rrab(stacka, "a");
+		if (ft_strncmp("rrb", op, 4) == 0)
+			rrab(stackb, "b");
+		if (ft_strncmp("rrr", op, 4) == 0)
+			rrr(stacka, stackb);		
 	}
 }

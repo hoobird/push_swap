@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/21 04:47:30 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 01:42:30 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,6 +289,15 @@ void	solve3(t_stack *stack1, char *aorb)
 			rab(stack1, aorb);
 		}	
 }
+
+void getcloserto0(int *a)
+{
+	if (*a > 0)
+		*a = *a - 1;
+	else
+		*a = *a + 1;
+}
+
 void	solve5(t_stack *stacka, t_stack *stackb)
 {
 	int	move;
@@ -297,23 +306,21 @@ void	solve5(t_stack *stacka, t_stack *stackb)
 	count = 2;
 	while(count > 0)
 	{
-		move = findminreturnindex(stacka);
-		if (move > 1)
-			move = 5 - move;
+		if (findminreturnindex(stacka) > 1)
+			move = stacka->top - findminreturnindex(stacka);
 		else
-			move += 1;
+			move = -1 - findminreturnindex(stacka);
 		while (move != 0)
 		{
 			if (move > 0)
 				rab(stacka, "a");
 			if (move < 0)
 				rrab(stacka, "a");
+			getcloserto0(&move);
 		}
 		pab(stacka, stackb, "b");
 		count--;
 	}
 	solve3(stacka, "a");
-	pab(stacka, stackb, "a");
-	pab(stacka, stackb, "a");
-	printstack(stacka, stackb);
+	repeatops("pa", 2, stacka, stackb);
 }

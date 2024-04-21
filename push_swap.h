@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:36:56 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/21 03:55:57 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/21 15:43:32 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	rab(t_stack *stack1, char *aorb);
 void	rr(t_stack *stacka, t_stack *stackb);
 void	rrab(t_stack *stack1, char *aorb);
 void	rrr(t_stack *stacka, t_stack *stackb);
+void	repeatops(char *op, int times, t_stack *stacka, t_stack *stackb);
 
 #endif
