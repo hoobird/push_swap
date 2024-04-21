@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 19:16:18 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/18 21:26:00 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 06:01:01 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	pushnum(t_stack *stack1, int num)
 {
-	int topindex;
+	int	topindex;
 
 	topindex = stack1->top;
 	stack1->top = topindex + 1;
@@ -33,7 +33,7 @@ int	popnum(t_stack *stack1)
 int	findmaxreturnindex(t_stack *stack1)
 {
 	int	indexcounter;
-	int largestnum;
+	int	largestnum;
 	int	largestindex;
 
 	indexcounter = stack1->top;
@@ -48,13 +48,13 @@ int	findmaxreturnindex(t_stack *stack1)
 		}
 		indexcounter--;
 	}
-	return largestindex;
+	return (largestindex);
 }
 
 int	findminreturnindex(t_stack *stack1)
 {
 	int	indexcounter;
-	int smallestnum;
+	int	smallestnum;
 	int	smallestindex;
 
 	indexcounter = stack1->top;
@@ -69,13 +69,13 @@ int	findminreturnindex(t_stack *stack1)
 		}
 		indexcounter--;
 	}
-	return smallestindex;
+	return (smallestindex);
 }
 
 int	findminreturnindexrange(t_stack *stack1, int range)
 {
 	int	indexcounter;
-	int lowernum;
+	int	lowernum;
 	int	lowerindex;
 
 	indexcounter = stack1->top;
@@ -92,5 +92,5 @@ int	findminreturnindexrange(t_stack *stack1, int range)
 		}
 		indexcounter--;
 	}
-	return lowerindex;
+	return (lowerindex);
 }

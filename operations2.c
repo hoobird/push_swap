@@ -6,16 +6,16 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/21 15:45:15 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 06:02:14 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    rab(t_stack *stack1, char *aorb)
+void	rab(t_stack *stack1, char *aorb)
 {
-	int newlast;
-	int count;
+	int	newlast;
+	int	count;
 
 	count = stack1->top;
 	if (count <= 0)
@@ -31,17 +31,17 @@ void    rab(t_stack *stack1, char *aorb)
 		ft_putstr_fd(ft_strjoin(ft_strjoin("r", aorb), "\n"), 1);
 }
 
-void    rr(t_stack *stacka, t_stack *stackb)
+void	rr(t_stack *stacka, t_stack *stackb)
 {
 	rab(stacka, 0);
 	rab(stackb, 0);
 	ft_putstr_fd("rr\n", 1);
 }
 
-void    rrab(t_stack *stack1, char *aorb)
+void	rrab(t_stack *stack1, char *aorb)
 {
-	int newfirst;
-	int count;
+	int	newfirst;
+	int	count;
 
 	count = 0;
 	if (stack1->top <= 0)
@@ -49,7 +49,7 @@ void    rrab(t_stack *stack1, char *aorb)
 	newfirst = stack1->arr[0];
 	while (count < stack1->top)
 	{
-		stack1->arr[count] = stack1->arr[count+1];
+		stack1->arr[count] = stack1->arr[count + 1];
 		count++;
 	}
 	stack1->arr[stack1->top] = newfirst;
@@ -57,7 +57,7 @@ void    rrab(t_stack *stack1, char *aorb)
 		ft_putstr_fd(ft_strjoin(ft_strjoin("rr", aorb), "\n"), 1);
 }
 
-void    rrr(t_stack *stacka, t_stack *stackb)
+void	rrr(t_stack *stacka, t_stack *stackb)
 {
 	rrab(stacka, 0);
 	rrab(stackb, 0);
@@ -89,6 +89,6 @@ void	repeatops(char *op, int times, t_stack *stacka, t_stack *stackb)
 		if (ft_strncmp("rrb", op, 4) == 0)
 			rrab(stackb, "b");
 		if (ft_strncmp("rrr", op, 4) == 0)
-			rrr(stacka, stackb);		
+			rrr(stacka, stackb);
 	}
 }

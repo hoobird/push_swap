@@ -1,14 +1,23 @@
-void	printstack(t_stack *stacka)
+void	printstack(t_stack *stacka, t_stack *stackb)
 {
 	int	largestindex;
 
 	largestindex = stacka->top;
+	ft_printf("TOPA->");
 	while (largestindex >= 0)
 	{
 		ft_printf("%d ", stacka->arr[largestindex]);
 		largestindex--;
 	}
-	ft_printf("\n");
+	ft_printf("<-BOTTOMA\t");
+	largestindex = stackb->top;
+	ft_printf("TOPB->");
+	while (largestindex >= 0)
+	{
+		ft_printf("%d ", stackb->arr[largestindex]);
+		largestindex--;
+	}
+	ft_printf("<-BOTTOMB\n");
 }
 
 void	solve(t_stack *stacka, t_stack *stackb, int size)

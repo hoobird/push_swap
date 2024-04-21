@@ -1,4 +1,6 @@
-import random;
+#!/usr/bin/env python3
+
+import random
 import sys
 import random
 def main():
@@ -13,11 +15,11 @@ def main():
     
     randomlist=[]
     while (len(randomlist) <= length):
-        num = random.randint(-length*100, length*100)
+        num = random.randint(-length*10, length*10)
         if num not in randomlist:
             randomlist.append(num)
     output = ' '.join(str(e) for e in randomlist)
-    print(f"./push_swap {output}") 
+    print(f"ARGS=\"{output}\"") 
 
 
 if __name__ == "__main__":

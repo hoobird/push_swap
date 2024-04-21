@@ -1,6 +1,6 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
-SRCS = push_swap.c validation.c operations.c operations2.c preparations.c stackfunc.c checker.c
+CFLAGS = -Wall -Wextra -Werror
+SRCS = push_swap.c validation.c operations.c operations2.c preparations.c stackfunc.c doingmath.c solver.c solvercostcal.c solvermove.c
 OBJS = $(SRCS:.c=.o)
 FTPRINTF_PATH = ./ft_printf
 LIBFT_PATH = $(FTPRINTF_PATH)/libft
