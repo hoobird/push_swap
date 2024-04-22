@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:09:38 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 06:20:52 by hulim            ###   ########.fr       */
+/*   Updated: 2024/04/22 08:13:17 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,21 @@ int	istherenodup(int size, char **args)
 		counter++;
 	}
 	free(intlist);
+	return (1);
+}
+
+int	checkifsorted(t_stack *stacka, int size)
+{
+	int	counter;
+
+	counter = 0;
+	while (counter < size - 1)
+	{
+		if (stacka->arr[counter] < stacka->arr[counter + 1])
+			return (0);
+		counter++;
+	}
+	if (stacka->top != size - 1)
+		return (0);
 	return (1);
 }
