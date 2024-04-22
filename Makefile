@@ -24,7 +24,7 @@ clean:
 	make -C $(FTPRINTF_PATH) clean
 
 fclean: clean
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(NAME)
 	make -C $(FTPRINTF_PATH) fclean
 
 re:	fclean all
