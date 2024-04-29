@@ -4,7 +4,7 @@ SRCS = push_swap.c validation.c operations.c operations2.c preparations.c stackf
 OBJS = $(SRCS:.c=.o)
 FTPRINTF_PATH = ./ft_printf
 LIBFT_PATH = $(FTPRINTF_PATH)/libft
-FTPRINTF = $(FTPRINTF_PATH)/libftprintf.a
+FTPRINTF = $(FTPRINTF_PATH)/libftgnlprintf.a
 LIBFT = $(LIBFT_PATH)/libft.a
 NAME = push_swap
 

@@ -5,12 +5,11 @@ SRC = ft_printf.c ft_cat_c.c ft_cat_s.c  ft_cat_p.c ft_cat_id.c ft_cat_u.c ft_ca
 
 OBJ = $(SRC:.c=.o)
 
-NAME = libftprintf.a
+NAME = libftgnlprintf.a
 
 LIBFTPATH = ./libft
-LIBFT = ./libft/libft.a
-
-
+LIBFT = ./libft/libftgnl.a
+ 
 all:	$(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
@@ -21,11 +20,11 @@ $(OBJ):	$(SRC)
 	$(CC)  $(CFLAGS) -c $(SRC)
 
 $(LIBFT):
-	make -C $(LIBFTPATH) all
+	make -C $(LIBFTPATH) new
 	
 clean:
 	make -C $(LIBFTPATH) clean
-	rm -f $(OBJ) $(OBJB)
+	rm -f $(OBJ)
 	
 fclean:	clean
 	make -C $(LIBFTPATH) fclean

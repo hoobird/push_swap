@@ -11,10 +11,21 @@ ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 SRCB  = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
+SRCGNL = get_next_line_bonus.c get_next_line_utils_bonus.c
+
 OBJ = $(SRC:.c=.o)
 OBJB = $(SRCB:.c=.o)
+OBJGNL = $(SRCGNL:.c=.o)
 
 NAME = libft.a
+NAMEGNL = gnl.a
+NEW = libftgnl.a
+
+new: $(NAMEGNL)
+	ar rcs $(NEW) $(NAMEGNL) $(NAME)
+
+$(NAMEGNL) : $(OBJGNL) bonus
+	ar rcs $(NAMEGNL) $(OBJGNL)
 
 all:	$(NAME)
 
@@ -27,15 +38,18 @@ $(OBJ):	$(SRC)
 $(OBJB): $(SRCB)
 	$(CC)  $(CFLAGS) -c $(SRCB)
 
-bonus: $(OBJ) $(OBJB) libft.h
+$(OBJGNL): $(SRCGNL)
+	$(CC)  $(CFLAGS) -c $(SRCGNL)
+
+bonus: $(OBJ) $(OBJB)
 	ar rcs $(NAME) $(OBJ) $(OBJB)
 
 clean:
-	rm -f $(OBJ) $(OBJB)
+	rm -f $(OBJ) $(OBJB) $(OBJGNL)
 	
 fclean:	clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NEW) $(NAMEGNL)
 
-re:	fclean $(NAME)
+re:	fclean new
 	
 .PHONY: all fclean clean re 
