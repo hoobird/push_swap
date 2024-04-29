@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/20 15:23:16 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/30 01:10:43 by hulim            ###   ########.fr       */
+/*   Created: 2024/04/30 00:58:46 by hulim             #+#    #+#             */
+/*   Updated: 2024/04/30 01:09:53 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int	main()
+# include "ft_printf/ft_printf.h"
+# include "ft_printf/libft/libft.h"
+# include <unistd.h>
+
+typedef struct s_stack
 {
-	t_stack	stacka;
-	t_stack	stackb;
+	int				top;
+	int				*arr;
+}	t_stack;
 
-	stacka.top = -1;
-	stackb.top = -1;
-	return (0);
-}
+#endif
