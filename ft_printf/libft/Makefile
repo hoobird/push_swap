@@ -21,8 +21,8 @@ NAME = libft.a
 NAMEGNL = gnl.a
 NEW = libftgnl.a
 
-new: $(NAMEGNL)
-	ar rcs $(NEW) $(NAMEGNL) $(NAME)
+new: $(OBJGNL) bonus
+	ar rcs $(NEW) $(OBJ) $(OBJB) $(OBJGNL)
 
 $(NAMEGNL) : $(OBJGNL) bonus
 	ar rcs $(NAMEGNL) $(OBJGNL)
