@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulim <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:38:36 by hulim             #+#    #+#             */
-/*   Updated: 2023/09/07 15:39:47 by hulim            ###   ########.fr       */
+/*   Updated: 2024/05/01 15:03:22 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line_bonus.h"
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

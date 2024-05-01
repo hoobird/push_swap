@@ -2,7 +2,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = push_swap.c validation.c operations.c operations2.c preparations.c stackfunc.c doingmath.c solver.c solvercostcal.c solvermove.c
 OBJS = $(SRCS:.c=.o)
-SRCSB = checker.c validation.c operations.c operations2.c preparations.c stackfunc.c 
+SRCSB = checker.c validation.c operations.c operations2.c preparations.c stackfunc.c doingmath.c solver.c solvercostcal.c solvermove.c
+OBJSB = $(SRCSB:.c=.o)
 FTPRINTF_PATH = ./ft_printf
 LIBFT_PATH = $(FTPRINTF_PATH)/libft
 FTPRINTF = $(FTPRINTF_PATH)/libftgnlprintf.a
@@ -13,8 +14,11 @@ all: $(NAME)
 
 bonus: $(BONUS)
 
-$(BONUS): 
-	echo "bonus"
+$(BONUS): $(FTPRINTF) $(SRCSB)
+	$(CC) $(CFLAGS) $(SRCSB) $(FTPRINTF) -o $(BONUS)
+
+$(OBJSB): $(SRCSB)
+	$(CC) $(CFLAGS) -c $(SRCSB)
 
 $(NAME): $(FTPRINTF) $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) $(FTPRINTF) -o $(NAME)

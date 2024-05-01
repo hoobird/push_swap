@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:36:56 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/30 19:36:54 by hulim            ###   ########.fr       */
+/*   Updated: 2024/05/01 15:07:27 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		isargsintandnodup(int size, char **args);
 int		isstrnum(char *numstr);
 int		isintwithinlimt(char *numstr);
 int		istherenodup(int size, char **args);
+int		checkifsorted(t_stack *stacka, int size);
 
 // solver.c
 void	solve2(t_stack *stack1, char *aorb);
@@ -77,8 +78,5 @@ int		popnum(t_stack *stack1);
 int		findmaxreturnindex(t_stack *stack1);
 int		findminreturnindex(t_stack *stack1);
 int		findminreturnindexrange(t_stack *stack1, int range);
-
-// checker.c
-int		checkifsorted(t_stack *stacka, int size);
 
 #endif
