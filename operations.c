@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 13:12:49 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 06:54:20 by hulim            ###   ########.fr       */
+/*   Updated: 2024/05/03 03:18:28 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ss(t_stack *stacka, t_stack *stackb)
 	sab(stacka, 0);
 	sab(stackb, 0);
 	ft_putstr_fd("ss", 1);
+	ft_putchar_fd('\n', 1);
 }
 
 void	pab(t_stack *stacka, t_stack *stackb, char *aorb)
