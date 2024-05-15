@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: hulim <hulim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:36:56 by hulim             #+#    #+#             */
-/*   Updated: 2024/05/01 15:07:27 by hulim            ###   ########.fr       */
+/*   Updated: 2024/05/15 17:37:46 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ typedef struct s_stack
 }	t_stack;
 
 // pushswap.c
+int		getstrstrsize(char **str);
+void	freenumstr(char **numstr);
+char	**copyfromargv(char **argv, int argc);
 void	solve(t_stack *stacka, t_stack *stackb, int size);
 
 // validation.c

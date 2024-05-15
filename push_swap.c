@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: hulim <hulim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 06:37:49 by hulim            ###   ########.fr       */
+/*   Updated: 2024/05/15 17:54:24 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,25 @@ int	main(int argc, char **argv)
 	t_stack	b;
 	int		condition1;
 	int		condition2;
+	char	**numstr;
 
 	if (argc == 1)
 		return (0);
-	condition1 = !isargsintandnodup(argc - 1, &argv[1]);
-	condition2 = setupstacks(&a, &b, argc - 1) == -1;
+	if (argc == 2)
+		numstr = ft_split(argv[1], ' ');
+	else
+		numstr = copyfromargv(argv, argc);
+	condition1 = !isargsintandnodup(getstrstrsize(numstr), numstr);
+	condition2 = setupstacks(&a, &b, getstrstrsize(numstr)) == -1;
 	if (condition1 || condition2)
-	{
 		ft_putstr_fd("Error\n", 2);
-		freestack(&a, &b);
-		return (0);
+	else
+	{
+		populatestacka(&a, numstr, getstrstrsize(numstr));
+		solve(&a, &b, getstrstrsize(numstr));
 	}
-	populatestacka(&a, &argv[1], argc - 1);
-	solve(&a, &b, argc - 1);
 	freestack(&a, &b);
+	freenumstr(numstr);
 	return (0);
 }
 
