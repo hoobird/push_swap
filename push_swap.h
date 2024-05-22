@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 09:36:56 by hulim             #+#    #+#             */
-/*   Updated: 2024/05/15 17:37:46 by hulim            ###   ########.fr       */
+/*   Updated: 2024/05/22 16:17:06 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		checkifsorted(t_stack *stacka, int size);
 // solver.c
 void	solve2(t_stack *stack1, char *aorb);
 void	solve3(t_stack *stack1, char *aorb);
-void	solve5(t_stack *stacka, t_stack *stackb);
+void	solvesmall(t_stack *stacka, t_stack *stackb);
 void	solveusingcost(t_stack *stacka, t_stack *stackb);
 
 // solvercostcal.c

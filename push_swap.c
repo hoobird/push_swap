@@ -6,7 +6,7 @@
 /*   By: hulim <hulim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 09:11:26 by hulim             #+#    #+#             */
-/*   Updated: 2024/05/15 17:54:24 by hulim            ###   ########.fr       */
+/*   Updated: 2024/05/22 16:19:01 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ void	solve(t_stack *stacka, t_stack *stackb, int size)
 		return ;
 	if (size == 2)
 		solve2(stacka, "a");
-	else if (size == 3)
-		solve3(stacka, "a");
-	else if (size == 5)
-		solve5(stacka, stackb);
-	else if (size > 3)
+	else if (size <= 8)
+		solvesmall(stacka, stackb);
+	else if (size > 8)
 		solveusingcost(stacka, stackb);
 }

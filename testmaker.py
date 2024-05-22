@@ -17,6 +17,7 @@ def main():
     random.shuffle(randomlist)
     output = ' '.join(str(e) for e in randomlist)
     print(f"ARGS=\"{output}\";")
+    print("./push_swap $ARGS | ./checker $ARGS")
     print("./push_swap $ARGS | ./checker_linux $ARGS")
     print("./push_swap $ARGS | wc -l")
 

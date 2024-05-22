@@ -12,7 +12,7 @@ BONUS = checker
 
 all: $(NAME)
 
-bonus: $(BONUS)
+bonus: $(BONUS) all
 
 $(BONUS): $(FTPRINTF) $(SRCSB)
 	$(CC) $(CFLAGS) $(SRCSB) $(FTPRINTF) -o $(BONUS)

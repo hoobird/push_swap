@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hulim <hulim@student.42singapore.sg>       +#+  +:+       +#+        */
+/*   By: hulim <hulim@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 04:19:34 by hulim             #+#    #+#             */
-/*   Updated: 2024/04/22 05:51:58 by hulim            ###   ########.fr       */
+/*   Updated: 2024/05/22 16:17:06 by hulim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void	solve3(t_stack *stack1, char *aorb)
 	}
 }
 
-void	solve5(t_stack *stacka, t_stack *stackb)
+void	solvesmall(t_stack *stacka, t_stack *stackb)
 {
 	int	move;
 	int	count;
 
-	count = 2;
+	count = stacka->top - 2;
 	while (count > 0)
 	{
 		if (findminreturnindex(stacka) > 1)
@@ -71,7 +71,8 @@ void	solve5(t_stack *stacka, t_stack *stackb)
 		count--;
 	}
 	solve3(stacka, "a");
-	repeatops("pa", 2, stacka, stackb);
+	while (stackb->top >= 0)
+		pab(stacka, stackb, "a");
 }
 
 void	solveusingcost(t_stack *stacka, t_stack *stackb)
