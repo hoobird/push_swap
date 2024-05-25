@@ -14,14 +14,14 @@ all: $(NAME)
 
 bonus: $(BONUS) all
 
-$(BONUS): $(FTPRINTF) $(SRCSB)
-	$(CC) $(CFLAGS) $(SRCSB) $(FTPRINTF) -o $(BONUS)
+$(BONUS): $(FTPRINTF) $(OBJSB)
+	$(CC) $(CFLAGS) $(OBJSB) $(FTPRINTF) -o $(BONUS)
 
-$(OBJSB): $(SRCSB)
-	$(CC) $(CFLAGS) -c $(SRCSB)
-
-$(NAME): $(FTPRINTF) $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) $(FTPRINTF) -o $(NAME)
+$(NAME): $(FTPRINTF) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(FTPRINTF) -o $(NAME)
+	
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(FTPRINTF):
 	make -C $(FTPRINTF_PATH) all
