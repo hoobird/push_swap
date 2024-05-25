@@ -36,4 +36,4 @@ fclean: clean
 
 re:	fclean all
 
-phony: all fclean clean re libft ft_printf push_swap
+.phony: all fclean clean re libft ft_printf push_swap
